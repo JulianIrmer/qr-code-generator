@@ -7,8 +7,7 @@ import cryptoRandomString from 'crypto-random-string';
 import mongoose from 'mongoose';
 import URLSchema from './schemas.js';
 
-const PORT = 3001;
-console.log(os.hostname());
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 const __dirname = path.resolve();
