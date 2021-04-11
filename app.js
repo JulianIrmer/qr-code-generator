@@ -26,6 +26,7 @@ const mongo_options = {
 
 mongoose.connect(DB_URL, mongo_options, (err) => {
     if (err) {return err}
+    console.log('###### CONNECTED TO MONGODB ######');
 });
 
 app.get('/', (req, res) => {
