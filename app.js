@@ -56,7 +56,7 @@ app.get('/open', (req, res) => {
 });
 
 async function getShortURL(req) {
-    const prefix = `http://${req.headers.host}/open/?id=`
+    const prefix = `https://${req.headers.host}/open/?id=`
     const id = cryptoRandomString({length: 15, type: 'url-safe'});
 
     const result = {
