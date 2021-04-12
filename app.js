@@ -47,7 +47,7 @@ app.get('/open', (req, res) => {
     const id = req.query.id;
     URLSchema.findOne({id: id}, (err, doc) => {
         if (err) res.send(err);
-        res.redirect(doc.url);
+        res.redirect(301, doc.url);
     });
 });
 
