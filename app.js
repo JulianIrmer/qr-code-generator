@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
 app.post('/api/generate', async (req, res) => {
     const data = req.body.data;
     const short = await getShortURL(req);
+    const code = await qrcode.toDataURL(short.short);
     const url = new URLSchema({id: short.id, short: short.short, url: data});
 
     url.save();
