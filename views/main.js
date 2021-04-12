@@ -39,7 +39,7 @@ function showCode(data) {
 }
 
 function getSanitizedInput(data) {
-    return data.replace('wwww', 'http://')
+    return data.replace('wwww.', 'http://')
 }
 
 init();
