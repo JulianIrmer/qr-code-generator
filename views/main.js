@@ -6,8 +6,10 @@ function handleInput() {
     const button = document.querySelector('.js-generate');
     
     button.addEventListener('click', async () => {
-        const input = document.querySelector('.js-input').value;
+        const input = document.querySelector('.js-input').value.trim();
         if (input.length === 0) return;
+
+        const sanitizedInput = getSanitizedInput(input);
 
         const url = window.location.href + 'api/generate';
 
@@ -16,7 +18,7 @@ function handleInput() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({data: input})
+            body: JSON.stringify({data: sanitizedInput})
         });
         response = await response.json();
         console.log(response.data);
@@ -34,6 +36,10 @@ function showCode(data) {
     link.href = data;
     link.classList.remove('hidden');
     container.appendChild(qrcode);
+}
+
+function getSanitizedInput(data) {
+    return data.replace('wwww', 'http://')
 }
 
 init();
