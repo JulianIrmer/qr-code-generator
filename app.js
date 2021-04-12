@@ -41,10 +41,7 @@ app.post('/api/generate', async (req, res) => {
 
     url.save();
 
-    qrcode.toDataURL(short, (err, base64) => {
-        if (err) res.send(err);
-        res.send(base64);
-    });
+    res.json({data: code})
 });
 
 app.get('/open', (req, res) => {
