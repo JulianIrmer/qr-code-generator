@@ -39,7 +39,7 @@ function showCode(data) {
 }
 
 function getSanitizedInput(data) {
-    let result = '';
+    let result = data;
     if (data.indexOf('www.') > -1 && data.indexOf('https://') === -1 && data.indexOf('http://') === -1) {
         result = data.replace('www.', 'http://');
     }
