@@ -28,8 +28,10 @@ function showCode(data) {
     const container = document.querySelector('.js-result');
     container.innerHTML = '';
     const qrcode = document.createElement('img');
+    const link = document.querySelector('.js-save');
     qrcode.src = data;
-
+    link.download = 'your_qr_code';
+    link.href = data;
     container.appendChild(qrcode);
 }
 
