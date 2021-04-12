@@ -40,7 +40,7 @@ app.post('/api/generate', async (req, res) => {
     const url = new URLSchema({id: short.id, short: short.short, url: data});
     url.save();
 
-    res.json({data: code})
+    res.json({data: code});
 });
 
 app.get('/open', (req, res) => {
