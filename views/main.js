@@ -32,6 +32,7 @@ function showCode(data) {
     qrcode.src = data;
     link.download = 'your_qr_code';
     link.href = data;
+    link.classList.remove('hidden');
     container.appendChild(qrcode);
 }
 

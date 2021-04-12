@@ -1,15 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+}
 .wrapper {
-
+    background-color: #121212;
+    color: #cccccc;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .header {
-
+    font-size: 3vw;;
 }
 
 .action-wrapper {
+    display: flex;
+    justify-content: center;
+}
 
+.js-input {
+    padding: 10px;
+    font-size: 133%;
+}
+
+.js-generate {
+    padding: 15px;
 }
 
 .result-wrapper {
-    
+    margin-top: 30px;
+}
+
+.js-save {
+    display: inline-block;
+    color: #cccccc;
+    text-decoration: underline;
+    font-size: 2vw;
+    margin-top: 0;
+    transition: all 250ms ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    margin-top: 30px;
 }
