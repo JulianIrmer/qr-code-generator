@@ -7,6 +7,8 @@ function handleInput() {
     
     button.addEventListener('click', async () => {
         const input = document.querySelector('.js-input').value;
+        if (input.length === 0) return;
+
         const url = window.location.href + 'api/generate';
 
         let response = await fetch(url, {
