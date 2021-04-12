@@ -38,7 +38,6 @@ app.post('/api/generate', async (req, res) => {
     const short = await getShortURL(req);
     const code = await qrcode.toDataURL(short.short);
     const url = new URLSchema({id: short.id, short: short.short, url: data});
-
     url.save();
 
     res.json({data: code})
@@ -48,7 +47,6 @@ app.get('/open', (req, res) => {
     const id = req.query.id;
     URLSchema.findOne({id: id}, (err, doc) => {
         if (err) res.send(err);
-        if (doc.length === 0) res.send('Nothing found');
         res.redirect(doc.url);
     });
 });
