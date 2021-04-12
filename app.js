@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const __dirname = path.resolve();
 app.use(express.json());
+app.use(express.static(__dirname + '/views'));
 app.set('view engine', 'html');
 
 const DB_URL = 'mongodb+srv://admin:lala1234@cluster0.nbzl7.mongodb.net/QRCodeGenerator?retryWrites=true&w=majority';
