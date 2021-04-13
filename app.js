@@ -51,7 +51,7 @@ app.get('/api/open', (req, res) => {
             if (doc) {
                 res.json({data: doc.url});
             } else {
-                res.send('Nothing found');
+                res.json({data: 'Nothing found'});
             }
         });
     } catch (error) {
