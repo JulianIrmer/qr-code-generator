@@ -57,8 +57,6 @@ async function checkForQR() {
 
     if (response.data.includes('www.') || response.data.includes('http://') || response.data.includes('https://') ) {
         window.location.href = response.data;
-    } else {
-        // window.location.href = 'https://qr-code.me';
     }
 }
 
