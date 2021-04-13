@@ -1,19 +1,15 @@
 import express from 'express'
 import qrcode from 'qrcode';
-import bodyParser from 'body-parser';
-import os from 'os';
-import path from 'path';
 import cryptoRandomString from 'crypto-random-string';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import URLSchema from './schemas.js';
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-const __dirname = path.resolve();
 app.use(express.json());
-app.use(express.static(__dirname + '/views'));
-app.set('view engine', 'html');
+app.use(cors());
 
 const DB_URL = 'mongodb+srv://admin:lala1234@cluster0.nbzl7.mongodb.net/QRCodeGenerator?retryWrites=true&w=majority';
 
@@ -29,10 +25,6 @@ mongoose.connect(DB_URL, mongo_options, (err) => {
     console.log('###### CONNECTED TO MONGODB ######');
 });
 
-app.get('/', (req, res) => {
-    res.render('index');
-});
-
 app.post('/api/generate', async (req, res) => {
     const data = req.body.data;
     const short = await getShortURL(req);
@@ -43,11 +35,11 @@ app.post('/api/generate', async (req, res) => {
     res.json({data: code});
 });
 
-app.get('/open', (req, res) => {
+app.get('/api/open', (req, res) => {
     const id = req.query.id;
     URLSchema.findOne({id: id}, (err, doc) => {
         if (err) res.send(err);
-        res.redirect(301, doc.url);
+        res.json({data: doc.url});
     });
 });
 
