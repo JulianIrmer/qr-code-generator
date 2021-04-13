@@ -25,6 +25,10 @@ mongoose.connect(DB_URL, mongo_options, (err) => {
     console.log('###### CONNECTED TO MONGODB ######');
 });
 
+app.get('/', (req, res) => {
+    res.send('API RUNNING...');
+});
+
 app.post('/api/generate', async (req, res) => {
     const data = req.body.data;
     const short = await getShortURL(req);
