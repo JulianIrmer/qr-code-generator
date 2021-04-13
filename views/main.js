@@ -1,4 +1,7 @@
+// const SERVER_URL = 'https://link2qr.herokuapp.com/';
+const SERVER_URL = window.location.host + '/';
 function init() {
+    checkForQR();
     handleInput();
 }
 
@@ -11,7 +14,7 @@ function handleInput() {
 
         const sanitizedInput = getSanitizedInput(input);
 
-        const url = window.location.href + 'api/generate';
+        const url = SERVER_URL + 'api/generate';
 
         let response = await fetch(url, {
             method: 'POST',
@@ -21,7 +24,6 @@ function handleInput() {
             body: JSON.stringify({data: sanitizedInput})
         });
         response = await response.json();
-        console.log(response.data);
         showCode(response.data);
     });
 }
@@ -44,6 +46,20 @@ function getSanitizedInput(data) {
         result = data.replace('www.', 'http://');
     }
     return result;
+}
+
+async function checkForQR() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    if (!id) {
+        window.location.href = 'https://qr-code.me';
+    };
+
+    let response = await fetch(SERVER_URL + 'api/open?id=' + id);
+
+    response = await response.json();
+    console.log(response);
+    window.location.href = response.data;
 }
 
 init();
