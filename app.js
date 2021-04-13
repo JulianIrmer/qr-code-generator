@@ -30,21 +30,29 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/generate', async (req, res) => {
-    const data = req.body.data;
-    const short = await getShortURL(req);
-    const code = await qrcode.toDataURL(short.short);
-    const url = new URLSchema({id: short.id, short: short.short, url: data});
-    url.save();
-
-    res.json({data: code});
+    try {
+        const data = req.body.data;
+        const short = await getShortURL(req);
+        const code = await qrcode.toDataURL(short.short);
+        const url = new URLSchema({id: short.id, short: short.short, url: data});
+        url.save();
+    
+        res.json({data: code});
+    } catch (error) {
+        res.send(error);
+    }
 });
 
 app.get('/api/open', (req, res) => {
-    const id = req.query.id;
-    URLSchema.findOne({id: id}, (err, doc) => {
-        if (err) res.send(err);
-        res.json({data: doc.url});
-    });
+    try {
+        const id = req.query.id;
+        URLSchema.findOne({id: id}, (err, doc) => {
+            if (err) res.send(err);
+            res.json({data: doc.url});
+        });
+    } catch (error) {
+        res.send(error);
+    }
 });
 
 async function getShortURL(req) {
