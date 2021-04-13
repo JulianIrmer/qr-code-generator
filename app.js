@@ -47,11 +47,14 @@ app.get('/api/open', (req, res) => {
     try {
         const id = req.query.id;
         URLSchema.findOne({id: id}, (err, doc) => {
-            if (err) res.send(err);
-            if (doc) {
+            if (err) {
+                res.send(err);
+            } else  if (doc) {
+                console.log(doc.url);
                 res.json({data: doc.url});
             } else {
-                res.json({data: 'Nothing found'});
+                console.log('Nothing found');
+                res.send({data: 'Nothing found'});
             }
         });
     } catch (error) {
