@@ -63,7 +63,7 @@ app.get('/api/open', (req, res) => {
 });
 
 async function getShortURL(req) {
-    const prefix = `https://${req.headers.host}/open/?id=`
+    const prefix = `https://qr-code.me/open/?id=`
     const id = cryptoRandomString({length: 15, type: 'url-safe'});
 
     const result = {
