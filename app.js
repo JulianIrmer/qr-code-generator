@@ -1,78 +1,55 @@
 import express from 'express'
-import qrcode from 'qrcode';
-import cryptoRandomString from 'crypto-random-string';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import URLSchema from './schemas.js';
+import fs from 'fs';
+import path from 'path';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import user from './routes/user.js';
+import url from './routes/url.js';
+import dotenv from 'dotenv';
+dotenv.config();
+import bodyParser from 'body-parser';
+import cookieSession from 'cookie-session';
+import passport from 'passport';
 
 const PORT = process.env.PORT || 3001;
-
-const app = express();
-app.use(express.json());
-app.use(cors());
-
-const DB_URL = 'mongodb+srv://admin:lala1234@cluster0.nbzl7.mongodb.net/QRCodeGenerator?retryWrites=true&w=majority';
+const DB_URL = process.env.DB_URL;
+const __dirname = path.resolve(path.dirname(''));
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 
 // DB conntection
 const mongo_options = {
-  useNewUrlParser: true, 
-  useUnifiedTopology: true,
-  useCreateIndex: true
-};
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  };
+  
+  mongoose.connect(DB_URL, mongo_options, (err) => {
+      if (err) {return err}
+      console.log('###### CONNECTED TO MONGODB ######');
+  });
+  
 
-mongoose.connect(DB_URL, mongo_options, (err) => {
-    if (err) {return err}
-    console.log('###### CONNECTED TO MONGODB ######');
-});
+const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('API RUNNING...');
-});
+app.use(cors({credentials: true, origin: true}));
+app.use(helmet());
+app.use(morgan('tiny', {stream: accessLogStream}));
+app.use(bodyParser.json());
+app.use(cookieSession({
+    name: 'google-auth-session',
+    keys: ['key1', 'key2']
+}));
 
-app.post('/api/generate', async (req, res) => {
-    try {
-        const data = req.body.data;
-        const short = await getShortURL(req);
-        const code = await qrcode.toDataURL(short.short);
-        const url = new URLSchema({id: short.id, short: short.short, url: data});
-        url.save();
-    
-        res.json({data: code});
-    } catch (error) {
-        res.send(error);
-    }
-});
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get('/api/open', (req, res) => {
-    try {
-        const id = req.query.id;
-        URLSchema.findOne({id: id}, (err, doc) => {
-            if (err) {
-                res.send(err);
-            } else  if (doc) {
-                console.log(doc.url);
-                res.json({data: doc.url});
-            } else {
-                console.log('Nothing found');
-                res.send({data: 'Nothing found'});
-            }
-        });
-    } catch (error) {
-        res.send(error);
-    }
-});
+app.use('/user', user);
+app.use('/url', url);
 
-async function getShortURL(req) {
-    const prefix = `https://qr-code.me/?id=`
-    const id = cryptoRandomString({length: 15, type: 'url-safe'});
-
-    const result = {
-        id: id,
-        short: prefix + id
-    };
-
-    return result;
-}
+app.use(express.static('views'));
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}...`);

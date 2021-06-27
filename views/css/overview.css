@@ -1,0 +1,41 @@
+.js-code-container {
+    border-bottom: 1px solid #cccccc;
+    width: 100%;
+    background-color: #1b1b1b;
+
+}
+
+.js-code-container:nth-of-type(odd){
+    background-color: #333333;
+}
+
+.img-qr {
+    height: 170px;
+}
+
+.info-container {
+    padding: 25px;
+    flex-direction: column;
+}
+
+.js-modify-input {
+    font-size: 133%;
+}
+
+.js-modify {
+    height: 59px;
+    background-color: #28a745;
+    border: 0;
+}
+
+.js-delete {
+    height: 59px;
+    width: 120px;
+    background-color: #dc3545;
+    border: 0;
+}
+
+.action-container {
+    padding-top: 10px;
+    text-align: left;
+}

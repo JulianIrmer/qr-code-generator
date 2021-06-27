@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+}
+
+.wrapper {
+    background-color: #121212;
+    color: #cccccc;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.google-login {
+    display: flex;
+    justify-content: center;
+}
+
+.info-text {
+    margin-top: 300px;
+    color: #121212;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.btn {
+    height: 45px;
+    padding: 10px;
+}
+
+.input-field {
+    height: 35px;
+    padding: 10px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.mb-5 {
+    margin-bottom: 25px;
+}
+
+.js-error-msg {
+    color: red;
+    padding: 5px;
+}
+
+.red-text {
+    color: red;
+}
+
+.success-msg {
+    color: green;
+    font-size: 22px;
+}
+
+.active {
+    font-weight: bold;
+    color: rgb(180,0,0) !important;
+}
+
+.justify-content-center {
+    justify-content: center;
+}

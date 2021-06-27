@@ -1,5 +1,4 @@
-const SERVER_URL = 'https://link2qr.herokuapp.com/';
-// const SERVER_URL = window.location.host + '/';
+const SERVER_URL = window.location.protocol + '//' + window.location.host;
 function init() {
     checkForQR();
     handleInput();
@@ -14,7 +13,7 @@ function handleInput() {
 
         const sanitizedInput = getSanitizedInput(input);
 
-        const url = SERVER_URL + 'api/generate';
+        const url = SERVER_URL + '/url/api/generate';
 
         let response = await fetch(url, {
             method: 'POST',
@@ -51,6 +50,8 @@ function getSanitizedInput(data) {
 async function checkForQR() {
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
+
+    if (!id) return;
 
     let response = await fetch(SERVER_URL + 'api/open?id=' + id);
     response = await response.json();

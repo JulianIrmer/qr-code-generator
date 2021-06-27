@@ -1,21 +1,19 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-}
-.wrapper {
-    background-color: #121212;
-    color: #cccccc;
-    padding: 20px;
-    margin: 0 auto;
-    text-align: center;
-}
 
 .header {
     font-size: 3vw;;
 }
 
 .action-wrapper {
+    padding: 10px;
+}
+
+.select-type {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.user-input {
     display: flex;
     justify-content: center;
 }
@@ -26,11 +24,14 @@ body {
 }
 
 .js-generate {
-    padding: 15px;
+    padding: 10px;
+    cursor: pointer;
+    height: 54px;
 }
 
 .result-wrapper {
-    margin-top: 30px;
+    margin-top: 30px auto;
+    text-align: center;
 }
 
 .js-save {
@@ -48,7 +49,15 @@ body {
 }
 
 .info-wrapper {
-    width: 50%;
+    width: 50vw;
     margin: 0 auto;
     text-align: left;
+    color: white;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+    .info-wrapper {
+        width: 80vw;
+    }    
 }
