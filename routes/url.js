@@ -117,7 +117,7 @@ router.post('/api/update', authenticate, async (req, res) => {
 
 async function getShortURL() {
     // const prefix = `https://qr-code.me/?id=`;
-    const prefix = `https://https://link2qr.herokuapp.com/?id=`;
+    const prefix = `https://link2qr.herokuapp.com/?id=`;
     // const prefix = `http://localhost:3001/?id=`;
     const id = cryptoRandomString({length: 15, type: 'url-safe'});
 
