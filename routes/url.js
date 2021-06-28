@@ -2,7 +2,7 @@ import express from 'express';
 import qrcode from 'qrcode';
 import cryptoRandomString from 'crypto-random-string';
 import URLSchema from '../schemas/UrlSchema.js';
-import UserSchema from '../schemas/userSchema.js';
+import UserSchema from '../schemas/UserSchema.js';
 import { authenticate } from '../helpers/util.js';
 const router = express.Router();
 

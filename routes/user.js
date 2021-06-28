@@ -1,12 +1,11 @@
 import express from 'express';
 import path from 'path';
-import UserSchema from '../schemas/userSchema.js';
+import UserSchema from '../schemas/UserSchema.js';
 import passport from 'passport';
 import passportGoogleOauth2 from 'passport-google-oauth2';
 const GoogleStrategy = passportGoogleOauth2.Strategy;
 import dotenv from 'dotenv';
 import { authenticate } from '../helpers/util.js';
-import UrlSchema from '../schemas/UrlSchema.js';
 dotenv.config();
 
 const __dirname = path.resolve(path.dirname(''));
