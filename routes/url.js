@@ -13,8 +13,6 @@ router.post('/api/generate', async (req, res) => {
         const code = await qrcode.toDataURL(short.short);
         const email = req.user.email ? req.user.email : null;
 
-        console.log(typeof code);
-
         const url = new URLSchema({
             id: short.id, 
             short: short.short, 
@@ -79,7 +77,6 @@ router.get('/api/getuserdata', authenticate, async (req, res) => {
 
 router.get('/api/delete', authenticate, async (req, res) => {
     try {
-        console.log(req.query);
         const email = req.user.email;
         const id = req.query.id;
         const user = await UserSchema.findOne({email: email});
@@ -105,7 +102,6 @@ router.get('/api/delete', authenticate, async (req, res) => {
 router.post('/api/update', authenticate, async (req, res) => {
     try {
         const {id, value} = req.body;
-        console.log(req.body);
         const url = await URLSchema.findOne({_id: id});
         url.url = value;
         url.save();
@@ -117,7 +113,7 @@ router.post('/api/update', authenticate, async (req, res) => {
 
 async function getShortURL() {
     // const prefix = `https://qr-code.me/?id=`;
-    const prefix = `https://link2qr.herokuapp.com/?id=`;
+    const prefix = `https://link2qr.herokuapp.com/url/api/open?id=`;
     // const prefix = `http://localhost:3001/?id=`;
     const id = cryptoRandomString({length: 15, type: 'url-safe'});
 
