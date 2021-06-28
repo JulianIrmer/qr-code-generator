@@ -46,6 +46,10 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '/views/index.html'));
+});
+
 app.use('/user', user);
 app.use('/url', url);
 
