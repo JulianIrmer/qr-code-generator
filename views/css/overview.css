@@ -26,6 +26,7 @@
     height: 59px;
     background-color: #28a745;
     border: 0;
+    max-width: 150px;
 }
 
 .js-delete {

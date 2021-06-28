@@ -39,7 +39,7 @@ async function deleteCode(target) {
     container.appendChild(msgElement);
 
     setTimeout(() => {
-        // container.remove();
+        container.remove();
     }, 1000);
 }
 
@@ -81,7 +81,7 @@ function generateHTML(data) {
         `
         No QR Codes found!
         <br>
-        <a href="/">Generate your first QR Code!</a>
+        <a class="link" href="/">Generate your first QR Code!</a>
         `;
         container.appendChild(headline);
         return;
@@ -100,7 +100,7 @@ function generateHTML(data) {
         <div class="d-flex info-container w-100">
             <div class="url d-flex">
                 <input class="js-modify-input input-field" data-id="${id}" data-old="${element.url}" type="text" value="${element.url}">
-                <button class="js-modify btn w-100" data-id="${id}">Modify</button>
+                <button class="js-modify btn w-100" data-id="${id}">Save</button>
             </div>
             <div class="action-container">
                 <button class="js-delete btn" data-id="${id}">Delete</button>

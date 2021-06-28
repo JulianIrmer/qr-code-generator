@@ -36,49 +36,44 @@
             <h1>QR Code Generator</h1>
         </div>
         <div class="action-wrapper">
-                <form class="select-type">
-                    <div>
-                        <input type="radio" name="url" id="url">
-                        <label for="url">Url</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="text" id="text">
-                        <label for="text">Text</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="image" id="image">
-                        <label for="image">Image</label>
-                    </div>
-                </form>
-            </div>
-            <div class="user-input">
-                <input class="js-input" autofocus type="text" placeholder="Enter URL...">
-                <button class="js-generate">Generate</button>
-            </div>
+            <form class="select-type">
+                <div>
+                    <input type="radio" name="url" id="url">
+                    <label for="url">Url</label>
+                </div>
+                <div>
+                    <input type="radio" name="text" id="text">
+                    <label for="text">Text</label>
+                </div>
+            </form>
         </div>
-
-        <div class="result-wrapper">
-            <div class="js-result"></div>
-            <a href="" class="js-save hidden">Download QR Code</a>
+        <div class="user-input">
+            <input class="js-input" autofocus type="text" placeholder="Enter URL...">
+            <button class="js-generate">Generate</button>
         </div>
+    </div>
 
-        <div class="info-wrapper">
-            <p>
-                If you want your QR codes to be saved for later use or modification of the content, 
-                you can log in with your Google account.
-                <br>
-                <br>
-                The QR codes will be displayed on the Overview page. 
-                Here you have the possibility to delete QR codes or change their destination, 
-                for example the URL, without having to change the QR code itself.
-                This way you can keep already printed QR codes, but change their content.
-                These codes are called <strong>Dynamic QR Codes</strong>.
-            </p>
-            <div class="google-login">
-                <a href="/user/login">
-                    <img src="assets/google_button.png" class="js-login btn"></img>
-                </a>
-            </div>
+    <div class="result-wrapper">
+        <div class="js-result"></div>
+        <a href="" class="js-save hidden">Download QR Code</a>
+    </div>
+
+    <div class="info-wrapper">
+        <p>
+            If you want your QR codes to be saved for later use or modification of the content, 
+            you can log in with your Google account.
+            <br>
+            <br>
+            The QR codes will be displayed on the Overview page. 
+            Here you have the possibility to delete QR codes or change their destination, 
+            for example the URL, without having to change the QR code itself.
+            This way you can keep already printed QR codes, but change their content.
+            These codes are called <strong>Dynamic QR Codes</strong>.
+        </p>
+        <div class="google-login">
+            <a href="/user/login">
+                <img src="assets/google_button.png" class="js-login btn"></img>
+            </a>
         </div>
     </div>
     <p class="info-text">QR Code is a two-dimensional version of the barcode, typically made up of black and white pixel patterns. Denso Wave, a Japanese subsidiary of the Toyota supplier Denso, developed them for marking components in order to accelerate logistics processes for their automobile production. Now, it has found its way into mobile marketing with the widespread adoption of smartphones. "QR" stands for "Quick Response", which refers to the instant access to the information hidden in the Code.</p>
