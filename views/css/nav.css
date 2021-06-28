@@ -35,9 +35,9 @@
     top: -15px;
     margin: 0 auto;
     z-index: 1000;
-    -webkit-transition: all 250ms ease-in-out;
-    -o-transition: all 250ms ease-in-out;
-    transition: all 250ms ease-in-out;
+    -webkit-transition: opacity 250ms ease-in-out;
+    -o-transition: opacity 250ms ease-in-out;
+    transition: opacity 250ms ease-in-out;
 }
 
 .mobile-ul {
