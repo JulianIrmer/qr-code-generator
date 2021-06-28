@@ -6,6 +6,6 @@ const passwordInput = document.querySelector('.js-password');
 loginBtn.addEventListener('click', login);
 
 function login() {
-    const url = 'http://' + SERVER_URL + '/user/login';
+    const url = SERVER_URL + '/user/login';
     window.location.href = url;
 }

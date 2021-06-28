@@ -27,7 +27,7 @@ function handleBtnEvents() {
 async function deleteCode(target) {
     const id = target.dataset.id;
     const container = document.querySelector(`.js-code-container[data-id="${id}"]`);
-    const url = `http://localhost:3001/url/api/delete?id=${id}`;
+    const url = `${SERVER_URL}/url/api/delete?id=${id}`;
     
     let response = await fetch(url);
     response = await response.json();
@@ -46,7 +46,7 @@ async function deleteCode(target) {
 async function modifyCode(target) {
     const id = target.dataset.id;
     const urlInput = document.querySelector(`.js-modify-input[data-id="${id}"]`);
-    const url = `http://localhost:3001/url/api/update`;
+    const url = `${SERVER_URL}/url/api/update`;
     const value = urlInput.value;
     const oldValue = urlInput.dataset.old;
     if (oldValue === value) {
@@ -66,7 +66,7 @@ async function modifyCode(target) {
 }
 
 async function getData() {
-    const url = 'http://' + SERVER_URL + '/url/api/getuserdata';
+    const url = SERVER_URL + '/url/api/getuserdata';
 
     let data = await fetch(url);
     data = await data.json();
