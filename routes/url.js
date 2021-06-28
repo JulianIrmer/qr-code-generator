@@ -47,10 +47,10 @@ router.get('/api/open', (req, res) => {
                 res.send(err);
             } else  if (doc) {
                 console.log(doc.url);
-                res.json({data: doc.url});
+                res.redirect(doc.url);
             } else {
                 console.log('Nothing found');
-                res.send({data: 'Nothing found'});
+                res.redirect('/');
             }
         });
     } catch (error) {
