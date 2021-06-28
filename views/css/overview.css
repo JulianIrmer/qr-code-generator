@@ -2,7 +2,7 @@
     border-bottom: 1px solid #cccccc;
     width: 100%;
     background-color: #1b1b1b;
-
+    padding: 30px;
 }
 
 .js-code-container:nth-of-type(odd){
@@ -14,7 +14,7 @@
 }
 
 .info-container {
-    padding: 25px;
+    padding: 0px 10px 0 10px;
     flex-direction: column;
 }
 
@@ -37,6 +37,6 @@
 }
 
 .action-container {
-    padding-top: 10px;
+    padding-top: 53px;
     text-align: left;
 }
