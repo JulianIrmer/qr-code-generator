@@ -40,7 +40,7 @@
     text-decoration: underline;
     font-size: 2vw;
     margin-top: 0;
-    transition: all 250ms ease-in-out;
+    /* transition: all 250ms ease-in-out; */
 }
 
 .hidden {

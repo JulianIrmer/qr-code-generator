@@ -114,7 +114,7 @@
 }
 
 .hidden {
-    visibility: 0;
+    visibility: none;
     opacity: 0;
     width: 0;
     padding: 0;
