@@ -61,5 +61,5 @@ app.use(express.static('views'));
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}...`);
-    wakeUpDyno('https://link2qr.herokuapp.com/');
+    wakeUpDyno('https://link2qr.herokuapp.com/', 60);
 });
