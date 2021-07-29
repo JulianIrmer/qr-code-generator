@@ -12,6 +12,7 @@ dotenv.config();
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
+import wakeUpDyno from './wakeupdyno.js';
 
 const PORT = process.env.PORT || 3001;
 const DB_URL = process.env.DB_URL;
@@ -55,6 +56,10 @@ app.use('/url', url);
 
 app.use(express.static('views'));
 
+// keep dyno awake
+
+
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}...`);
+    wakeUpDyno('https://link2qr.herokuapp.com/');
 });

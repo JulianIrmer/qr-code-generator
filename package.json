@@ -33,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.3",
     "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1",
     "node-url-shortener": "^1.1.11",
     "passport": "^0.4.1",
     "passport-google-oauth2": "^0.2.0",
